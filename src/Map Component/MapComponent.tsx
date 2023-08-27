@@ -177,7 +177,7 @@ const MapComponentWithPopup = () => {
             onClick={handleClose}>
             Close
           </button>
-          This is the box content
+          Popup Content
         </div>
       )}
     </div>
