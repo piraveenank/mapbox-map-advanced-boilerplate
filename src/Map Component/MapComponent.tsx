@@ -70,67 +70,69 @@ const MapComponentWithPopup = () => {
       const sourceId = `polygon-source-1`;
       const layerId = `polygon-layer-1`;
 
-      mapRef.current!.addSource(sourceId, {
-        type: "geojson",
-        data: {
-          type: "Feature",
-          geometry: {
-            type: "Polygon",
-            coordinates: [polygonCoordinates],
-          },
-          properties: {},
-        },
-      });
-
-      mapRef.current?.addLayer({
-        id: `${layerId}-border`,
-        type: "line",
-        source: sourceId,
-        paint: {
-          "line-color": "black",
-          "line-width": 1.3,
-        },
-      });
-
-      mapRef.current?.addLayer({
-        id: `${layerId}`,
-        type: "fill",
-        source: sourceId,
-        paint: {
-          "fill-color": "#ff0000",
-          "fill-opacity": 0.8,
-        },
-      });
-
-      mapRef.current?.on(
-        "click",
-        layerId,
-        (e: mapboxgl.MapMouseEvent & mapboxgl.EventData) => {
-          setPolygonClicked(true);
-          const currentIsSmallScreen = window.innerWidth < 768;
-
-          console.log(currentIsSmallScreen);
-          console.log(currentIsSmallScreen ? "100%" : "35%");
-
-          mapContainerRef.current!.style.width = currentIsSmallScreen
-            ? "100%"
-            : "35%";
-          mapRef.current!.resize();
-          const mapBoundingBox = turfBbox({
+      if (!mapRef.current!.getSource(sourceId)) {
+        mapRef.current!.addSource(sourceId, {
+          type: "geojson",
+          data: {
             type: "Feature",
             geometry: {
               type: "Polygon",
               coordinates: [polygonCoordinates],
             },
-          });
+            properties: {},
+          },
+        });
 
-          const [minX, minY, maxX, maxY] = mapBoundingBox;
-          mapRef.current!.fitBounds([
-            [minX, minY],
-            [maxX, maxY],
-          ]);
-        }
-      );
+        mapRef.current?.addLayer({
+          id: `${layerId}-border`,
+          type: "line",
+          source: sourceId,
+          paint: {
+            "line-color": "black",
+            "line-width": 1.3,
+          },
+        });
+
+        mapRef.current?.addLayer({
+          id: `${layerId}`,
+          type: "fill",
+          source: sourceId,
+          paint: {
+            "fill-color": "#ff0000",
+            "fill-opacity": 0.8,
+          },
+        });
+
+        mapRef.current?.on(
+          "click",
+          layerId,
+          (e: mapboxgl.MapMouseEvent & mapboxgl.EventData) => {
+            setPolygonClicked(true);
+            const currentIsSmallScreen = window.innerWidth < 768;
+
+            console.log(currentIsSmallScreen);
+            console.log(currentIsSmallScreen ? "100%" : "35%");
+
+            mapContainerRef.current!.style.width = currentIsSmallScreen
+              ? "100%"
+              : "35%";
+            mapRef.current!.resize();
+            const mapBoundingBox = turfBbox({
+              type: "Feature",
+              geometry: {
+                type: "Polygon",
+                coordinates: [polygonCoordinates],
+              },
+            });
+
+            const [minX, minY, maxX, maxY] = mapBoundingBox;
+            mapRef.current!.fitBounds([
+              [minX, minY],
+              [maxX, maxY],
+            ]);
+          }
+        );
+      }
     });
   });
 
