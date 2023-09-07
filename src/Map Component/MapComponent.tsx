@@ -3,7 +3,6 @@ import mapboxgl from "mapbox-gl";
 import turfBbox from "@turf/bbox";
 import { ExampleMainPolygon } from "./exampleMainPolygon";
 import { ExampleInnerPolygons } from "./exampleInnerPolygons";
-import { Chip } from "@mui/material";
 
 const MapComponentWithPopup = () => {
   const mapContainerRef = useRef<HTMLDivElement | null>(null);
