@@ -12,10 +12,11 @@ This repository contains a React application that demonstrates how to create a r
 ### Responsive Layout
 https://github.com/piraveenank/mapbox-map-advanced-boilerplate/assets/140046724/dca31c39-f715-4ed9-b360-9b922206e0ee
 
+### Map Interactions
+https://github.com/piraveenank/mapbox-map-advanced-boilerplate/assets/140046724/49826b46-1f2a-4f42-8c8c-f89596614cc8
 
 
 ## Known Issues
-
 Please note that integrating popups with Mapbox maps can sometimes lead to certain challenges. Here are some known issues and discussions related to this topic:
 
 1. [Popup Issues and Solutions](https://gist.github.com/danswick/fc56f37c10d40be62e4feac5984250d2): This gist provides insights into common popup-related problems faced while working with Mapbox maps and offers solutions to address them.
