@@ -8,6 +8,12 @@ This repository contains a React application that demonstrates how to create a r
 - Implements popups that appear when clicking on a polygon on the map.
 - Adjusts the map's behavior and layout for different screen sizes.
 
+
+### Responsive Layout
+https://github.com/piraveenank/mapbox-map-advanced-boilerplate/assets/140046724/dca31c39-f715-4ed9-b360-9b922206e0ee
+
+
+
 ## Known Issues
 
 Please note that integrating popups with Mapbox maps can sometimes lead to certain challenges. Here are some known issues and discussions related to this topic:
